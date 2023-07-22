@@ -1,5 +1,6 @@
 <script>
-import {store} from '../store.js'
+import {store} from '../store.js';
+import SingleElementApp from './SingleElementApp.vue';
 
 export default {
   data() {
@@ -7,6 +8,12 @@ export default {
       store,
     }
   },
+  components: {
+
+    SingleElementApp
+
+  },
+
   methods:{
     getFlag(lang){
         if(lang == 'it'){
@@ -29,6 +36,7 @@ export default {
         }
     }
   }
+
 }
 </script>
 
@@ -46,24 +54,8 @@ export default {
 
     <ul>
       <li v-for="(movie , i) in store.movies" :key="i">
-        <ol>
-          <li>
-            {{ movie.title }}
-          </li>
-
-          <li>
-            {{ movie.original_title }}
-          </li>
-
-          <li>
-            <img :src="getFlag(movie.original_language)" alt="">
-            
-          </li>
-
-          <li>
-            {{ movie.vote_average }}
-          </li>
-        </ol>
+        <SingleElementApp :elementData="movie"/>
+        
       </li>
     </ul>
 
@@ -75,24 +67,8 @@ export default {
 
     <ul>
       <li v-for="(singleSeries , i) in store.series" :key="i">
-        <ol>
-          <li>
-            {{ singleSeries.name }}
-          </li>
-
-          <li>
-            {{ singleSeries.original_name }}
-          </li>
-
-          <li>
-            <img :src="getFlag(singleSeries.original_language)" alt="">
-            
-          </li>
-
-          <li>
-            {{ singleSeries.vote_average }}
-          </li>
-        </ol>
+        <SingleElementApp :elementData="singleSeries"/>
+        
       </li>
     </ul>
   </main>

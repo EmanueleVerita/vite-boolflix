@@ -11,7 +11,8 @@ export default {
 
     data() {
         return {
-          store
+          store,
+          apiKey: '1b561498f100ed73b76b73daabe965d5'
         };
     },
     methods: {
@@ -20,7 +21,7 @@ export default {
 
         axios.get('https://api.themoviedb.org/3/search/movie' , {
           params: {
-            api_key: '1b561498f100ed73b76b73daabe965d5',
+            api_key: this.apiKey,
             query: this.store.searchText
           }
         })
@@ -32,7 +33,7 @@ export default {
 
         axios.get('https://api.themoviedb.org/3/search/tv' , {
           params: {
-            api_key: '1b561498f100ed73b76b73daabe965d5',
+            api_key: this.apiKey,
             query: this.store.searchText
           }
         })
