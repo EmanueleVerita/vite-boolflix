@@ -26,6 +26,10 @@
                     return 'https://flagicons.lipis.dev/flags/4x3/un.svg';
 
                 }
+               
+                },
+                vote(){
+                    return Math.ceil(this.elementData.vote_average / 2);
             }
         },
         props: {
@@ -61,15 +65,11 @@
           </li>
 
           <li>
-            {{ Math.ceil(elementData.vote_average / 2) }}
-          </li>
-
-          <li>
             <div>
-                <span v-for="numero in Math.ceil(elementData.vote_average / 2)">
+                <span v-for="numero in vote">
                     ★
                 </span>
-                <span v-for="numero in ( 5 - Math.ceil(elementData.vote_average / 2))">
+                <span v-for="numero in ( 5 - vote)">
                     ☆
                 </span>
             </div>
